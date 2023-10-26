@@ -1,0 +1,42 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:shape="rectangle">-->
+<!--    <gradient-->
+<!--        android:startColor="#FF2D9A59"-->
+<!--        android:endColor="#FF23729A"-->
+<!--        android:angle="90"-->
+<!--     />-->
+<!--</shape>-->
+
+
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:type="linear"
+        android:startColor="#FFDC84"
+        android:centerColor="#FF7848"
+        android:endColor="#F5715C"
+        android:angle="90"
+        />
+
+</shape>
+
+
+
+    <!--
+    android:startColor:
+    It is the starting color of the gradient.
+
+    android:endColor:
+    It is the ending color of the gradient.
+
+    android:centerColor:
+    It will come in the center of the screen.
+
+    android:angle:
+    It is a special angle and works only with the multiple of 45 including 0.
+    So you can give 0, 45, 90, 135 and so on.
+    Depending on the angle gradient position will change on the screen.
+-->
