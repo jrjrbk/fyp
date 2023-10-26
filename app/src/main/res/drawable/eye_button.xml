@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--When Button is not enabled -->
+    <item android:state_active="true" android:drawable="@drawable/baseline_remove_red_eye_24" />
+    <!--When Button is in pressed state -->
+    <item android:state_pressed="true" android:drawable="@drawable/baseline_remove_red_eye_24" />
+    <!--When Button is in selected state -->
+    <item android:state_enabled="false" android:drawable="@drawable/outline_remove_red_eye_24"/>
+</selector>
