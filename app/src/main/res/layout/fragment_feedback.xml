@@ -115,6 +115,7 @@
             app:layout_constraintTop_toBottomOf="@+id/feedbackSpinner" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,11 +124,26 @@
             app:layout_constraintTop_toBottomOf="@+id/feedbackCommentTV">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/commentEditText"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:hint="hint" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="178dp"
+            android:layout_height="52dp"
+            android:backgroundTint="#40000000"
+            android:fontFamily="@font/inter"
+            android:text="Submit"
+            android:textColor="#BEBEBE"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

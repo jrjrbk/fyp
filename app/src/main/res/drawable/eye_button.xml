@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--When Button is not enabled -->
-    <item android:state_active="true" android:drawable="@drawable/baseline_remove_red_eye_24" />
-    <!--When Button is in pressed state -->
-    <item android:state_pressed="true" android:drawable="@drawable/baseline_remove_red_eye_24" />
-    <!--When Button is in selected state -->
-    <item android:state_enabled="false" android:drawable="@drawable/outline_remove_red_eye_24"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >
+        <shape android:shape="oval"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#5e7974" />
+            <gradient android:angle="-90" android:startColor="#EB651A" android:endColor="#CCA598"  />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="oval"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#814B39" />
+            <solid android:color="#58857e"/>
+        </shape>
+    </item>
+    <item >
+        <shape android:shape="oval"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#5e7974" />
+            <gradient android:angle="-90" android:startColor="#EB651A" android:endColor="#814B39" />
+        </shape>
+    </item>
 </selector>
+
+
+
+    <!--    &lt;!&ndash;When Button is not enabled &ndash;&gt;-->
+<!--<item android:state_active="true" android:drawable="@drawable/baseline_mic_24" />-->
+<!--    &lt;!&ndash;When Button is in pressed state &ndash;&gt;-->
+<!--<item android:state_pressed="true" android:drawable="@drawable/baseline_mic_24" />-->
+<!--    &lt;!&ndash;When Button is in selected state &ndash;&gt;-->
+<!--<item android:state_enabled="false" android:drawable="@drawable/baseline_mic_24"/>-->

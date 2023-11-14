@@ -49,8 +49,13 @@
     <string name="confirm_password">Confirm password <font color='#F81919'>*</font></string>
     <string name="email">Email <font color='#F81919'>*</font></string>
     <string-array name="feedback_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
+        <item>App Rating</item>
+        <item>Bug Report</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="search_array">
+        <item>Album</item>
+        <item>Artist</item>
+        <item>Track</item>
     </string-array>
 </resources>

@@ -8,16 +8,70 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/homeMainTV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Home"
         tools:text="Home" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/recordButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/baseline_mic_24"
+        android:background="@drawable/eye_button"
+        android:text="Button"
+        />
+
+    <TextView
+        android:id="@+id/homeTv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/eye_button" />
+        android:text="Recommended For You"
+        android:fontFamily="@font/sfprodisplay"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="220dp"
+        />
+
+    <ImageView
+        android:id="@+id/recommendedHomeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_trending_up_24"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="223dp"
+        />
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/homeRV"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="300dp"-->
+<!--        />-->
+
+    <ImageView
+        android:id="@+id/homeImageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/baseline_remove_red_eye_24"
+        android:background="@color/black"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="270dp"/>
+
+    <ImageView
+        android:id="@+id/homeImageView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/baseline_remove_red_eye_24"
+        android:background="@color/black"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="270dp"/>
+
 
 </FrameLayout>
