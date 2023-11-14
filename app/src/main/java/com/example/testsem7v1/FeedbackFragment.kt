@@ -1,16 +1,23 @@
 package com.example.testsem7v1
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RatingBar
 import android.widget.Spinner
-import androidx.core.view.get
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.testsem7v1.databinding.FragmentFeedbackBinding
+import com.example.testsem7v1.retrofit.feedbackData
+import com.example.testsem7v1.retrofit.retrofitInstance
+import retrofit2.HttpException
+import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +48,7 @@ class FeedbackFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        val binding = FragmentFeedbackBinding.inflate(layoutInflater)
         return inflater.inflate(R.layout.fragment_feedback, container, false)
     }
 
@@ -49,11 +56,14 @@ class FeedbackFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val spinner: Spinner = view.findViewById(R.id.feedbackSpinner)
         val spinnerArray = {"toli";"toli2";"toli3"}
+        val ratingBar: RatingBar = view.findViewById(R.id.ratingBar)
+        val comments: EditText = view.findViewById(R.id.commentEditText)
+        val submitButton: Button = view.findViewById(R.id.submitButton)
         // Create an ArrayAdapter using the string array and a default spinner layout.
         ArrayAdapter.createFromResource(
             view.context,
             R.array.feedback_array,
-            R.layout.spinner_item          // spinner layout.
+            R.layout.spinner_item_feedback          // spinner layout.
         ).also { adapter ->
             // Specify the layout to use when the list of choices appear.
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -71,8 +81,44 @@ class FeedbackFragment : Fragment() {
 //                }
 //
 //            }
-
         }
+
+        submitButton.setOnClickListener{
+            val rating = ratingBar.rating
+            val comments = comments.text.toString().trim()
+            val type = spinner.selectedItem.toString()
+            val uID = userID.accountID
+
+            Log.e("FeedBACK", "rating $rating, type: $type, comments $comments, accountID ${userID.accountID}")
+
+            var feedbackData= feedbackData(
+                feedbackType = type,
+                AccountID = uID,
+                comments = comments,
+                rating = rating
+            )
+
+            lifecycleScope.launchWhenCreated {
+                val response = try{
+                    retrofitInstance.api.userRate(feedbackData)
+                } catch (e: IOException){
+                    Log.e("MainActivity", "IOException, you might not have internet connection")
+                    Log.e("Error",throw(e))
+                    return@launchWhenCreated // so that the thread can resume.
+                } catch (e: HttpException){
+                    Log.e("MainActivity", "HttpException, unexpected response")
+                    return@launchWhenCreated // so that the thread can resume.
+                }
+
+                if (response.isSuccessful && response.body() != null){
+                    Log.e("Feedback", "Response successful CODE:${response.code()}")
+                    Toast.makeText(this@FeedbackFragment.context, "Feedback sent", Toast.LENGTH_LONG).show()
+                }else{
+                    Log.e("Feedback", "Response not successful")
+                }
+            }
+        }
+
     }
 
     companion object {
