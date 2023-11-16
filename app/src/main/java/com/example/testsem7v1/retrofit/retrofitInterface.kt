@@ -1,6 +1,7 @@
 package com.example.testsem7v1.retrofit
 
 import com.example.testsem7v1.retrofit.spotify.album.albumResponse
+import com.example.testsem7v1.retrofit.spotify.recommendation.recommendationResponse
 import com.example.testsem7v1.retrofit.spotify.sAccessToken
 import com.example.testsem7v1.retrofit.spotify.test
 import okhttp3.ResponseBody
@@ -79,6 +80,9 @@ interface retrofitInterface {
                                     @Query("limit") limit: Int,
                                     @Query("offset") offset: Int): Response<albumResponse>
 
-
-
+    @GET("https://api.spotify.com/v1/recommendations")
+    suspend fun getRecommendation(@Header("Authorization") authHeader: String,
+                                  @Query("limit") limit: Int = 10,
+                                  @Query("seed_artists") seed_artists: String,
+                                  @Query("seed_tracks") seed_tracks: String): Response<recommendationResponse>
 }

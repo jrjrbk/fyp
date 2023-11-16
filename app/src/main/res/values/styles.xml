@@ -10,4 +10,9 @@
         <item name="colorControlActivated">#FFB84E</item>
     </style>
 
+    <style name="roundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5dp</item>
+    </style>
+
 </resources>
