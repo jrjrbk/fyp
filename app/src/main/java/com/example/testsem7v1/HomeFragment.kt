@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.testsem7v1.adapter.homeAlbumRVAdapter
 import com.example.testsem7v1.databinding.FragmentHomeBinding
-import com.example.testsem7v1.home.homervAdapter
-import com.example.testsem7v1.retrofit.spotify.test
-import kotlinx.coroutines.delay
+import com.example.testsem7v1.adapter.homeMusicRVAdapter
+import com.example.testsem7v1.retrofit.retrofitInstance
+import com.example.testsem7v1.retrofit.spotify.recommendation.recommendationResponse
+import retrofit2.HttpException
+import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,8 +33,6 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var homervAdapter: homervAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,16 +56,130 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // just a temporary solution
+        lateinit var musicRecyclerAdapter: homeMusicRVAdapter
+        lateinit var musicRVHome: RecyclerView
+        lateinit var albumRecyclerAdapter: homeAlbumRVAdapter
+        lateinit var albumRVHome: RecyclerView
 
-        val textViewTest: TextView = view.findViewById(R.id.homeMainTV)
+        //Progress bar
+        var musicProgressbar: ProgressBar = view.findViewById(R.id.musicProgressBar)
+        var albumProgressbar: ProgressBar = view.findViewById(R.id.albumProgressBar)
 
-//        textViewTest.text=artistData.name
+
+        // Adapter for Music
+        musicRVHome = view.findViewById(R.id.homeMusicRV)
+        musicRecyclerAdapter = homeMusicRVAdapter()
+        musicRVHome.adapter = musicRecyclerAdapter
+        musicRVHome.layoutManager =
+            GridLayoutManager(this@HomeFragment.context, 1, GridLayoutManager.HORIZONTAL, false)
+
+        // Adapter for Album
+        albumRVHome = view.findViewById(R.id.homeAlbumRV)
+        albumRecyclerAdapter = homeAlbumRVAdapter()
+        albumRVHome.adapter = albumRecyclerAdapter
+        albumRVHome.layoutManager =
+            GridLayoutManager(this@HomeFragment.context, 1, GridLayoutManager.HORIZONTAL, false)
 
 
-        //Actual asynch differ
+        // Token & RecyclerView populate
+        lifecycleScope.launchWhenCreated {
+            musicProgressbar.isVisible = true
+            albumProgressbar.isVisible = true
+            val response = try {
+                retrofitInstance.api.getToken(
+                    "client_credentials",
+                    "20d283513f3b4ea79bb4d0d35b975762",
+                    "02fb3bee5b6a4f6598fcc0c28f9a0ce2"
+                )
+            } catch (e: IOException) {
+                Log.e("MainActivity", "IOException, you might not have internet connection")
+                Log.e("Error", throw (e))
+                return@launchWhenCreated // so that the thread can resume.
+            } catch (e: HttpException) {
+                Log.e("MainActivity", "HttpException, unexpected response")
+                return@launchWhenCreated // so that the thread can resume.
+            }
 
+            if (response.isSuccessful && response.body() != null) {
+                Log.e("ActivityMain", "Response successful CODE:${response.code()}")
+                accessToken = response.body()!!
+                Log.e("ActivityMain-ACCESSTOKENTEST", accessToken.access_token)
+
+                // Get the recommendation data for music ================================
+                val recommendationResponse = try {
+                    val authentication = "${accessToken.token_type} ${accessToken.access_token}"
+                    Log.e("TESTAUTHTEST", authentication)
+                    retrofitInstance.api.getRecommendation(
+                        authentication,
+                        5,
+                        "4NHQUGzhtTLFvgF5SZesLK",
+                        "0c6xIDDpzE81m2q797ordA"
+                    )
+                } catch (e: IOException) {
+                    Log.e("MainActivity", "IOException, you might not have internet connection")
+                    Log.e("Error", throw (e))
+                    return@launchWhenCreated // so that the thread can resume.
+                } catch (e: HttpException) {
+                    Log.e("MainActivity", "HttpException, unexpected response")
+                    return@launchWhenCreated // so that the thread can resume.
+                }
+                if (recommendationResponse.isSuccessful && recommendationResponse.body() != null) {
+                    Log.e(
+                        "ActivityMain",
+                        "Response successful CODE:${recommendationResponse.code()}"
+                    )
+                    var recommendationData: recommendationResponse = recommendationResponse.body()!!
+
+//                    val copyArtistData = listOf(artistData, artistData,artistData,artistData)
+
+
+                    musicRecyclerAdapter.recommendationTrack = recommendationData.tracks
+                    musicProgressbar.isVisible = false
+                } else {
+                    Log.e("ActivityMain", "Response not successful")
+                }
+
+                // Get the recommendation data for album ========================
+                val recommendationResponse2 = try {
+                    val authentication = "${accessToken.token_type} ${accessToken.access_token}"
+                    Log.e("TESTAUTHTEST", authentication)
+                    retrofitInstance.api.getRecommendation(
+                        authentication,
+                        5,
+                        "4NHQUGzhtTLFvgF5SZesLK",
+                        "0c6xIDDpzE81m2q797ordA"
+                    )
+                } catch (e: IOException) {
+                    Log.e("MainActivity", "IOException, you might not have internet connection")
+                    Log.e("Error", throw (e))
+                    return@launchWhenCreated // so that the thread can resume.
+                } catch (e: HttpException) {
+                    Log.e("MainActivity", "HttpException, unexpected response")
+                    return@launchWhenCreated // so that the thread can resume.
+                }
+                if (recommendationResponse2.isSuccessful && recommendationResponse2.body() != null) {
+                    Log.e(
+                        "ActivityMain",
+                        "Response successful CODE:${recommendationResponse2.code()}"
+                    )
+                    var recommendationData2: recommendationResponse = recommendationResponse2.body()!!
+
+//                    val copyArtistData = listOf(artistData, artistData,artistData,artistData)
+
+
+                    albumRecyclerAdapter.recommendationAlbum = recommendationData2.tracks
+                    albumProgressbar.isVisible = false
+                } else {
+                    Log.e("ActivityMain", "Response not successful")
+                }
+
+
+            } else {
+                Log.e("ActivityMain", "Token retrieval not successful")
+            }
+        }
     }
+
 
     companion object {
         /**

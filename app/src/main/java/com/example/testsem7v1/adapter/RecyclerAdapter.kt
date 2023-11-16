@@ -1,10 +1,15 @@
-package com.example.testsem7v1
+package com.example.testsem7v1.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testsem7v1.EditProfileFragment
+import com.example.testsem7v1.FeedbackFragment
+import com.example.testsem7v1.R
+import com.example.testsem7v1.SettingsFragment
+import com.example.testsem7v1.Test
 import com.google.android.material.imageview.ShapeableImageView
 
 //Extends recyclerview

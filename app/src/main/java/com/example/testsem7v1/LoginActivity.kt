@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.testsem7v1.databinding.ActivityLoginBinding
 import com.example.testsem7v1.databinding.ActivityRegisterBinding
@@ -46,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if(response.isSuccessful && response.body() != null){
                     // sets the students list to response.body() which is the json file.
+                    Toast.makeText(this@LoginActivity,"Logging in",Toast.LENGTH_LONG).show()
                     Log.e("LoginActivity","SUCCESS!")
                     Log.e("LoginActivity",response.code().toString())
                     userID = response.body()!!
@@ -55,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     // !! means can be null
                 } else{
+                    Toast.makeText(this@LoginActivity,"Login Unsuccessful!",Toast.LENGTH_LONG).show()
                     Log.e("LoginActivity", "Response not successful")
                 }
             }

@@ -6,13 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Home fragment layout -->
+
+    <ImageView
+        android:id="@+id/homeMicImageView"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/baseline_mic_24"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="74dp"
+        android:layout_marginEnd="45dp"
+        />
+
     <TextView
-        android:id="@+id/homeMainTV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        tools:text="Home" />
+        android:id="@+id/homeRecordTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_gravity="center|top"
+        android:text="Tap to record"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sfprodisplay"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="5dp"
+        />
 
     <ImageButton
         android:id="@+id/recordButton"
@@ -33,7 +50,7 @@
         android:fontFamily="@font/sfprodisplay"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:layout_marginStart="65dp"
         android:layout_marginTop="220dp"
         />
@@ -44,34 +61,73 @@
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_trending_up_24"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="223dp"
+        android:layout_marginTop="221dp"
         />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/homeRV"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginTop="300dp"-->
-<!--        />-->
 
-    <ImageView
-        android:id="@+id/homeImageView2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/baseline_remove_red_eye_24"
-        android:background="@color/black"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="270dp"/>
+    <TextView
+        android:id="@+id/popularMusicTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Musics"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="280dp"
+        />
 
-    <ImageView
-        android:id="@+id/homeImageView3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/baseline_remove_red_eye_24"
-        android:background="@color/black"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="270dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeMusicRV"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="305dp"
+        />
+
+    <TextView
+        android:id="@+id/popularAlbumsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Albums"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="463dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeAlbumRV"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="488dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/musicProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone"
+        />
+
+    <ProgressBar
+        android:id="@+id/albumProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:visibility="gone"
+        />
 
 
 </FrameLayout>

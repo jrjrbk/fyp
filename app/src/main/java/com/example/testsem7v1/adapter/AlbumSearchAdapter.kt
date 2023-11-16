@@ -1,4 +1,4 @@
-package com.example.testsem7v1.retrofit.spotify.album
+package com.example.testsem7v1.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testsem7v1.artistData
 import com.example.testsem7v1.databinding.ItemAlbumsearchBinding
+import com.example.testsem7v1.retrofit.spotify.album.Item
 import com.squareup.picasso.Picasso
 
 class albumSearchAdapter: RecyclerView.Adapter<albumSearchAdapter.ViewHolder>(){

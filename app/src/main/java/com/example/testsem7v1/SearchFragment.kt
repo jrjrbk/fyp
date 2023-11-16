@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testsem7v1.databinding.FragmentSearchBinding
 import com.example.testsem7v1.retrofit.retrofitInstance
-import com.example.testsem7v1.retrofit.spotify.album.albumSearchAdapter
+import com.example.testsem7v1.adapter.albumSearchAdapter
 import okio.IOException
 import retrofit2.HttpException
 
