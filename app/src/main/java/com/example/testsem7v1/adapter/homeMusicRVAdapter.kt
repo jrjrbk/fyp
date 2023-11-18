@@ -14,8 +14,6 @@ class homeMusicRVAdapter: RecyclerView.Adapter<homeMusicRVAdapter.ViewHolder>() 
     }
 
 
-
-
     private val diffCallback = object: DiffUtil.ItemCallback<Track>(){
         override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
             return oldItem.id == newItem.id
