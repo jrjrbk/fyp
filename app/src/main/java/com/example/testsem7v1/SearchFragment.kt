@@ -80,7 +80,6 @@ class SearchFragment : Fragment() {
         albumSearchAdapter = albumSearchAdapter()
         recyclerViewSearch = view.findViewById(R.id.searchRV)
         recyclerViewSearch.adapter=albumSearchAdapter
-//        recyclerViewSearch.setHasFixedSize(true)
         recyclerViewSearch.layoutManager = LinearLayoutManager(this.context)
 
         binding =FragmentSearchBinding.inflate(layoutInflater)
