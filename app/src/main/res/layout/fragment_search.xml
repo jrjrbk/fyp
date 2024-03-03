@@ -29,23 +29,19 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <Spinner
-            android:id="@+id/searchSpinner"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
+            app:suggestionRowLayout="@layout/suggestion_item_layout"
             app:queryHint="Search here ..." />
 
     </com.google.android.material.card.MaterialCardView>
@@ -53,9 +49,46 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRV"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="550dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:selectionRequired="true"
+        app:singleSelection="true"
+        app:checkedChip="@+id/chip1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAlbum"
+            android:checkable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Album" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipArtist"
+            android:checkable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artist" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTrack"
+            android:checkable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track" />
+    </com.google.android.material.chip.ChipGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".PlaylistFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="Playlist"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/addPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Add Playlist"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="90dp"
+        android:backgroundTint="#40000000"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playlistRV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Playlist" />
+        android:layout_height="520dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        />
+
 
 </FrameLayout>

@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testsem7v1.databinding.ItemRecommendationBinding
+import com.example.testsem7v1.interfaces.spotifyItemClickListener
 import com.example.testsem7v1.retrofit.spotify.recommendation.Track
 import com.squareup.picasso.Picasso
 
 class homeMusicRVAdapter: RecyclerView.Adapter<homeMusicRVAdapter.ViewHolder>() {
+
+    lateinit var listener: spotifyItemClickListener
     inner class ViewHolder(val binding: ItemRecommendationBinding): RecyclerView.ViewHolder(binding.root) {
     }
 
@@ -45,6 +48,10 @@ class homeMusicRVAdapter: RecyclerView.Adapter<homeMusicRVAdapter.ViewHolder>() 
             artistNameHomeTV.text = recommendations.artists[0].name
             recommendationTitleTV.text = recommendations.name
             Picasso.get().load(recommendations.album.images[1].url).into(imgRecommendation)
+
+            homRecommendationItem.setOnClickListener {
+                listener.passTrackRef(recommendations.id)
+            }
         }
     }
 }

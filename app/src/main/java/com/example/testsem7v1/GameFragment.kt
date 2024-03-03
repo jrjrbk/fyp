@@ -1,10 +1,20 @@
 package com.example.testsem7v1
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
+import com.example.testsem7v1.activity.gameData
+import com.example.testsem7v1.activity.userID
+import com.example.testsem7v1.retrofit.retrofitInstance
+import kotlinx.coroutines.launch
+import okio.IOException
+import retrofit2.HttpException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,25 +45,85 @@ class GameFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game, container, false)
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GameFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GameFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val score: TextView = requireView().findViewById(R.id.modScore)
+
+        val badge1: CardView = requireView().findViewById(R.id.cardLock1)
+        val badge2: CardView = requireView().findViewById(R.id.cardLock2)
+        val badge3: CardView = requireView().findViewById(R.id.cardLock3)
+        val badge4: CardView = requireView().findViewById(R.id.cardLock4)
+
+        val badge1TV: TextView = requireView().findViewById(R.id.badgeAchieve1)
+        val badge2TV: TextView = requireView().findViewById(R.id.badgeAchieve2)
+        val badge3TV: TextView = requireView().findViewById(R.id.badgeAchieve3)
+        val badge4TV: TextView = requireView().findViewById(R.id.badgeAchieve4)
+
+        lifecycleScope.launch{
+            getGame()
+            score.text = gameData.score.toString()
+
+            if(gameData.score in 100..249){
+                badge1.visibility = View.GONE
+
+                badge1TV.text= getString(R.string.achievement_unlocked)
             }
+            else if(gameData.score in 250..999){
+                badge1.visibility = View.GONE
+                badge2.visibility = View.GONE
+
+                badge1TV.text= getString(R.string.achievement_unlocked)
+                badge2TV.text= getString(R.string.achievement_unlocked)
+
+            }
+            else if(gameData.score in 1000..2499){
+                badge1.visibility = View.GONE
+                badge2.visibility = View.GONE
+                badge3.visibility = View.GONE
+
+                badge1TV.text= getString(R.string.achievement_unlocked)
+                badge2TV.text= getString(R.string.achievement_unlocked)
+                badge3TV.text= getString(R.string.achievement_unlocked)
+
+            }
+            else if(gameData.score>=2500){
+                badge1.visibility = View.GONE
+                badge2.visibility = View.GONE
+                badge3.visibility = View.GONE
+                badge4.visibility = View.GONE
+
+                badge1TV.text= getString(R.string.achievement_unlocked)
+                badge2TV.text= getString(R.string.achievement_unlocked)
+                badge3TV.text= getString(R.string.achievement_unlocked)
+                badge4TV.text= getString(R.string.achievement_unlocked)
+
+            }
+        }
     }
+
+
+    private suspend fun getGame(): String{
+
+        var id = userID.accountID
+        Log.e("HOMEFRAGMENT-GETGOOD", id.toString())
+        val response = try {
+            retrofitInstance.api.getGame(id)
+        } catch (e: IOException) {
+            Log.e("HOMEFRAGMENT-GETGOOD", "IOException, you might not have internet connection")
+            return "failed"
+
+        } catch (e: HttpException) {
+            Log.e("HOMEFRAGMENT-GETGOOD", "HttpException, unexpected response")
+            return "failed"
+        }
+        if (response.isSuccessful && response.body() != null) {
+            gameData = response.body()!!
+        }
+
+        return "Success"
+    }
+
 }

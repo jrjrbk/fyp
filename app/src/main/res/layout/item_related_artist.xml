@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_marginEnd="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/relatedArtistItem"
+    >
+    <!--        android:background="#00252424"
+    -->
+
+    <ImageView
+        android:id="@+id/imgRelatedArtist"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/rounded_background"
+        android:src="@drawable/baseline_broken_image_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10" />
+
+    <TextView
+        android:id="@+id/relatedArtistNameTV"
+        android:layout_width="95dp"
+        android:layout_height="15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="#201F1F"
+        android:text="Placeholder Test"
+        android:textStyle="bold"
+        android:fontFamily="@font/sfprodisplay"
+        android:textAlignment="textStart"
+        android:textSize="11.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgRelatedArtist"
+        app:layout_constraintVertical_bias="0.10" />
+
+    <!--    ,#424141-->
+    <TextView
+        android:id="@+id/relatedArtistFollower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:textColor="#CBE1EBEC"
+        android:maxLines="1"
+        android:fontFamily="@font/inter"
+        android:text="Artist Name"
+        android:textAlignment="textStart"
+        android:textSize="10.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintVertical_bias="0.00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relatedArtistNameTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
 package com.example.testsem7v1.adapter
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testsem7v1.EditProfileFragment
 import com.example.testsem7v1.FeedbackFragment
+import com.example.testsem7v1.HomeFragment
+import com.example.testsem7v1.ProfileFragment
 import com.example.testsem7v1.R
-import com.example.testsem7v1.SettingsFragment
+import com.example.testsem7v1.AboutFragment
 import com.example.testsem7v1.Test
+import com.example.testsem7v1.activity.admin
+import com.example.testsem7v1.activity.loginSession
+import com.example.testsem7v1.retrofit.systemDatabase.userID
+import com.example.testsem7v1.activity.userID
+import com.example.testsem7v1.analyseFeedback
+import com.example.testsem7v1.editAbout
 import com.google.android.material.imageview.ShapeableImageView
 
 //Extends recyclerview
@@ -35,17 +44,36 @@ class recyclerAdapter (private val data: ArrayList<Test>): RecyclerView.Adapter<
             override fun onClick(v: View?) {
                 val activity=v!!.context as AppCompatActivity
                 // if (position = ?) for specific list.
-                if(holder.adapterPosition == 0){
+                if(holder.adapterPosition == 0 ){
                     activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, EditProfileFragment()).addToBackStack(null).commit()
                 }
-                else if (holder.adapterPosition == 1){
+                else if (holder.adapterPosition == 1 && !admin){
                     activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, FeedbackFragment()).addToBackStack(null).commit()
                 }
-                else if (holder.adapterPosition == 3){
-                    activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, SettingsFragment()).addToBackStack(null).commit()
+                else if (holder.adapterPosition == 2 && !admin){
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, AboutFragment()).addToBackStack(null).commit()
                 }
-                //.addToBackStack(null)
-                //disallowAddToBackStack()
+                else if (holder.adapterPosition == 3){
+                    val fragment1 = ProfileFragment()
+                    val fragment2 = HomeFragment()
+                    val currentFragment = activity.supportFragmentManager.findFragmentByTag(fragment1.javaClass.simpleName)
+                    val passedfrag = activity.supportFragmentManager.findFragmentByTag(fragment2.javaClass.simpleName)
+
+                    loginSession = false
+                    admin = false
+                    userID = userID(accountID = -1)
+                    activity.supportFragmentManager.beginTransaction().detach(currentFragment!!).commit()
+                    activity.recreate()
+                }
+                else if(holder.adapterPosition == 1 && admin){
+                    // analyse feedback
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, analyseFeedback()).addToBackStack(null).commit()
+
+                }
+                else if (holder.adapterPosition == 2 && admin){
+                    // edit About
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.profileFragment, editAbout()).addToBackStack(null).commit()
+                }
             }
         })
     }

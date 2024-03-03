@@ -13,11 +13,11 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/EditProfileTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/EditProfileTitle"
-            android:text="Edit Profile"
             android:fontFamily="@font/sfprodisplay"
+            android:text="Edit Profile"
             android:textColor="#F3EAEA"
             android:textSize="55sp"
             android:textStyle="bold"
@@ -26,6 +26,70 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06" />
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/editProfileImg"
+            android:background="@drawable/rounded_background"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/baseline_broken_image_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EditProfileTitle" />
+
+        <TextView
+            android:id="@+id/editProfileEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="@string/edit_picture"
+            android:textAllCaps="false"
+            android:clickable="true"
+            android:textColor="#12B8B2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editProfileImg" />
+
+        <TextView
+            android:id="@+id/editProfileUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="55dp"
+            android:text="Username"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/editProfileUsernameEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editProfileEdit" />
+
+        <EditText
+            android:id="@+id/editProfileUsernameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="45dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="juniorlolz"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editProfileEdit" />
+
+        <Button
+            android:id="@+id/editProfileConfirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:text="Confirm"
+            android:background="@drawable/rounded_corners_game"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editProfileUsernameEdit" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

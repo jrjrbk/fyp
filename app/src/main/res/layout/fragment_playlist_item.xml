@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".playlistItemFragment"
+    android:background="@drawable/gradient_background">
+
+
+    <TextView
+        android:id="@+id/playlistItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="Playlist"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playlistItemRV"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_corners_playlist"
+        />
+
+    <Button
+        android:id="@+id/enhanceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enhance Playlist"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#40000000"
+        />
+
+
+    <Button
+        android:id="@+id/editPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Playlist"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="#40000000"
+
+        />
+
+    <ImageView
+        android:id="@+id/playlistItemImg"
+        android:scaleType="centerCrop"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/baseline_broken_image_24"
+        android:layout_gravity="top|center"
+        android:background="@drawable/rounded_corners_background"
+        android:layout_marginTop="45dp"
+        />
+
+
+</FrameLayout>
