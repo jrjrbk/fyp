@@ -48,6 +48,10 @@
     <string name="password">Password <font color='#F81919'>*</font></string>
     <string name="confirm_password">Confirm password <font color='#F81919'>*</font></string>
     <string name="email">Email <font color='#F81919'>*</font></string>
+    <string name="achievement_unlocked">Achievement Unlocked!</string>
+    <string name="edit_picture"><u>edit Picture</u></string>
+    <string name="app_label"> MyApp</string>
+    <string name="search_hint">Search....</string>
     <string-array name="feedback_array">
         <item>App Rating</item>
         <item>Bug Report</item>

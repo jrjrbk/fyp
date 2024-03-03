@@ -13,8 +13,9 @@ import android.widget.RatingBar
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.example.testsem7v1.activity.userID
 import com.example.testsem7v1.databinding.FragmentFeedbackBinding
-import com.example.testsem7v1.retrofit.feedbackData
+import com.example.testsem7v1.retrofit.systemDatabase.feedbackData
 import com.example.testsem7v1.retrofit.retrofitInstance
 import retrofit2.HttpException
 import java.io.IOException
@@ -91,32 +92,38 @@ class FeedbackFragment : Fragment() {
 
             Log.e("FeedBACK", "rating $rating, type: $type, comments $comments, accountID ${userID.accountID}")
 
-            var feedbackData= feedbackData(
-                feedbackType = type,
-                AccountID = uID,
-                comments = comments,
-                rating = rating
-            )
+            if(comments.isEmpty()){
+                Toast.makeText(this@FeedbackFragment.context, "Comment must not be empty!", Toast.LENGTH_LONG).show()
+            }
+            else{
+                var feedbackData= feedbackData(
+                    feedbackType = type,
+                    AccountID = uID,
+                    comments = comments,
+                    rating = rating
+                )
 
-            lifecycleScope.launchWhenCreated {
-                val response = try{
-                    retrofitInstance.api.userRate(feedbackData)
-                } catch (e: IOException){
-                    Log.e("MainActivity", "IOException, you might not have internet connection")
-                    Log.e("Error",throw(e))
-                    return@launchWhenCreated // so that the thread can resume.
-                } catch (e: HttpException){
-                    Log.e("MainActivity", "HttpException, unexpected response")
-                    return@launchWhenCreated // so that the thread can resume.
-                }
+                lifecycleScope.launchWhenCreated {
+                    val response = try{
+                        retrofitInstance.api.userRate(feedbackData)
+                    } catch (e: IOException){
+                        Log.e("MainActivity", "IOException, you might not have internet connection")
+                        Log.e("Error",throw(e))
+                        return@launchWhenCreated // so that the thread can resume.
+                    } catch (e: HttpException){
+                        Log.e("MainActivity", "HttpException, unexpected response")
+                        return@launchWhenCreated // so that the thread can resume.
+                    }
 
-                if (response.isSuccessful && response.body() != null){
-                    Log.e("Feedback", "Response successful CODE:${response.code()}")
-                    Toast.makeText(this@FeedbackFragment.context, "Feedback sent", Toast.LENGTH_LONG).show()
-                }else{
-                    Log.e("Feedback", "Response not successful")
+                    if (response.isSuccessful && response.body() != null){
+                        Log.e("Feedback", "Response successful CODE:${response.code()}")
+                        Toast.makeText(this@FeedbackFragment.context, "Feedback sent", Toast.LENGTH_LONG).show()
+                    }else{
+                        Log.e("Feedback", "Response not successful")
+                    }
                 }
             }
+
         }
 
     }

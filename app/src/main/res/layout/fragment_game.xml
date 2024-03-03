@@ -1,14 +1,455 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameFragment">
+    tools:context=".GameFragment"
+    android:background="@drawable/gradient_background">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Game" />
+        android:id="@+id/gameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="Game"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/scoreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="Score:"
+        android:textColor="#FFE092" />
+
+    <TextView
+        android:id="@+id/modScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="33dp"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="200"
+        android:textColor="#FFE092" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="347dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_corners_game"
+        android:elevation="0dp">
+
+        <TextView
+            android:id="@+id/badgeTV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Basic Badge"
+            android:textColor="#5EE1E9"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/badgeSongTV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Identify 100 Songs"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeTV1" />
+
+        <TextView
+            android:id="@+id/badgeAchieve1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Achievement Locked"
+            android:textColor="#FFE092"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeSongTV1" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/basicCard"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            app:cardBackgroundColor="#92EACA"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47">
+
+            <TextView
+                android:id="@+id/cardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="BASIC"
+                android:textColor="#428F6A"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="82dp"
+                android:layout_height="93dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/basic_removebg_preview" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLock1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="#D8777777"
+            app:layout_constraintBottom_toTopOf="@+id/badgeAchieve1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeSongTV1" >
+
+            <ImageView
+                android:id="@+id/achievementLock1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/round_lock_24" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="347dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/rounded_corners_game"
+        android:elevation="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/basicCard2"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            app:cardBackgroundColor="#B0B8FD"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/cardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="ADVANCE"
+                android:textColor="#338BBE"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="82dp"
+                android:layout_height="93dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/advanced_removebg_preview" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/badgeTV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Advanced Badge"
+            android:textColor="#B0B8FD"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/badgeSongTV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Identify 500 Songs"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeTV2" />
+
+        <TextView
+            android:id="@+id/badgeAchieve2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Achievement Locked"
+            android:textColor="#FFE092"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeSongTV2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLock2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="#D8777777"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <ImageView
+                android:id="@+id/achievementLock2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/round_lock_24" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="347dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/rounded_corners_game"
+        android:elevation="0dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/basicCard3"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            app:cardBackgroundColor="#BCC1CB"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/cardText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="PRO"
+                android:textColor="#8E8E8A"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="82dp"
+                android:layout_height="93dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/pro_removebg_preview_1" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/badgeTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Pro Badge"
+            android:textColor="#333A38"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/badgeSongTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Identify 1000 Songs"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeTV3" />
+
+        <TextView
+            android:id="@+id/badgeAchieve3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Achievement Locked"
+            android:textColor="#FFE092"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeSongTV3" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLock3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="#D8777777"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <ImageView
+                android:id="@+id/achievementLock3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/round_lock_24" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="347dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/rounded_corners_game"
+        android:elevation="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/basicCard4"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            app:cardBackgroundColor="#FCD996"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/cardText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="PREMIUM"
+                android:textColor="#AAA87D"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="82dp"
+                android:layout_height="93dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/premium_removebg_preview" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/badgeTV4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Premium Badge"
+            android:textColor="#EBFF00"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/badgeSongTV4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Identify 2500 Songs"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeTV4" />
+
+        <TextView
+            android:id="@+id/badgeAchieve4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/sfprodisplay"
+            android:text="Achievement Locked"
+            android:textColor="#FFE092"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeSongTV4" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLock4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="#D8777777"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/badgeSongTV4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badgeTV4" >
+            <ImageView
+                android:id="@+id/achievementLock4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/round_lock_24" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

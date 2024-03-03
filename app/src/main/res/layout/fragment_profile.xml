@@ -27,25 +27,52 @@
             app:layout_constraintVertical_bias="0.06" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="75dp"
-            android:layout_height="66dp"
-            android:background="#6A1616"
+            android:scaleType="centerCrop"
+            android:id="@+id/profileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rounded_background"
             android:src="@drawable/baseline_person_24"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileHeader"
-            app:layout_constraintVertical_bias="0.51" />
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/profileHeader" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="551dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
             tools:listitem="@layout/list_item" />
+
+        <TextView
+            android:id="@+id/profileUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter"
+            android:textColor="#FFFFFF"
+            android:text="Username"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+        <TextView
+            android:id="@+id/joinedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Joined Date: 01/01/2023"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="700dp"
+    android:fillViewport="true"
+    tools:context=".aboutArtistFragment"
+    android:background="@drawable/gradient_background"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <TextView
+        android:id="@+id/aboutArtistTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfprodisplay"
+        android:text="About Artist"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:id="@+id/aboutArtistImage"
+        android:layout_width="399dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/baseline_broken_image_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/aboutArtistName"
+        android:layout_width="399dp"
+        android:layout_height="30dp"
+        android:background="#40000000"
+        android:fontFamily="@font/inter"
+        android:text="The Beatles"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutArtistImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/aboutArtistImage"
+        app:layout_constraintVertical_bias="0.00" />
+
+    <TextView
+        android:id="@+id/spotifyFollowerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Spotify Follower: "
+        app:layout_constraintHorizontal_bias="0.35"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutArtistImage" />
+
+    <TextView
+        android:id="@+id/spotifyFollower"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="32,000,000"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutArtistImage" />
+
+    <ImageView
+        android:id="@+id/spotifyLink"
+        android:clickable="true"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/spotify_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutArtistImage" />
+
+    <TextView
+        android:id="@+id/aboutGenreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter"
+        android:text="Genre:"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spotifyFollowerTV" />
+
+    <TextView
+        android:id="@+id/aboutTopTrackTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter"
+        android:text="Top Tracks"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutGenreListTV" />
+
+    <TextView
+        android:id="@+id/AboutAlbumTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Albums"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTopTrackRV" />
+
+    <TextView
+        android:id="@+id/AboutRelatedArtistTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter"
+        android:text="Related Artist"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutAlbumRV" />
+
+    <TextView
+        android:id="@+id/aboutGenreListTV"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="genreList"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutGenreTV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/aboutTopTrackRV"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTopTrackTV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/aboutAlbumRV"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AboutAlbumTV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/relatedArtistRV"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AboutRelatedArtistTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

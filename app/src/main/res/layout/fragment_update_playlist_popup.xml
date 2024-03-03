@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    tools:context=".popup.clickOptionPopUp"
+    android:background="@drawable/rounded_corners_playlist"
+    android:layout_marginTop="100dp"
+    >
+
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/updateOptionPopupImage"
+        android:background="@drawable/rounded_corners_background"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/baseline_broken_image_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateOptionTV" />
+
+    <TextView
+        android:id="@+id/updateOptionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Update Playlist"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/updateOptionChangeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/inter"
+        android:text="Change Image"
+        android:clickable="true"
+        android:textColor="#B3FFFFFF"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateOptionPopupImage" />
+
+    <EditText
+        android:id="@+id/updateOptionNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="13"
+        android:inputType="text"
+        android:text="Playlist Name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateOptionChangeImage" />
+
+    <Button
+        android:id="@+id/updateOptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Save"
+        android:backgroundTint="#80FFFFFF"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateOptionNameInput" />
+
+    <ProgressBar
+        android:id="@+id/updateOptionBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/updateOptionPopupImage"
+        app:layout_constraintEnd_toEndOf="@+id/updateOptionPopupImage"
+        app:layout_constraintStart_toStartOf="@+id/updateOptionPopupImage"
+        app:layout_constraintTop_toTopOf="@+id/updateOptionPopupImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

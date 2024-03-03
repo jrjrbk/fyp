@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testsem7v1.databinding.ItemAlbumsearchBinding
+import com.example.testsem7v1.interfaces.spotifyItemClickListener
 import com.example.testsem7v1.retrofit.spotify.album.Item
 import com.squareup.picasso.Picasso
 
 class albumSearchAdapter: RecyclerView.Adapter<albumSearchAdapter.ViewHolder>(){
+
+
+     lateinit var listener: spotifyItemClickListener
 
     // Binds this adapter to recycler item
     class ViewHolder (val binding: ItemAlbumsearchBinding): RecyclerView.ViewHolder(binding.root){
@@ -51,7 +55,12 @@ class albumSearchAdapter: RecyclerView.Adapter<albumSearchAdapter.ViewHolder>(){
             val albums = albums[position]
             albumTitle.text = albums.name
             artistTitle.text = albums.artists[0].name
-            Picasso.get().load(albums.images[2].url).into(albumImage)
+            albumSearchYear.text = albums.release_date
+            Picasso.get().load(albums.images[1].url).into(albumImage)
+
+            albumSearchItem.setOnClickListener {
+                listener.passAlbumRef(albums.id)
+            }
         }
     }
 }
