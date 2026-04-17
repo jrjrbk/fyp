@@ -1,5 +1,7 @@
 *.iml
 .gradle
+.env
+/app/src/main/res/raw/credential.json
 /local.properties
 /.idea/caches
 /.idea/libraries
