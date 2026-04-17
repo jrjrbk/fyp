@@ -8,6 +8,7 @@
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
+app/src/main/res/raw
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
