@@ -17,8 +17,11 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "SPOTIFY_CLIENT_ID", "\"${project.env.get('SPOTIFY_CLIENT_ID')}\""
+        buildConfigField "String", "SPOTIFY_CLIENT_SECRET", "\"${project.env.get('SPOTIFY_CLIENT_SECRET')}\""
+        buildConfigField "String", "ACR_ACCESS_KEY", "\"${project.env.get('ACR_ACCESS_KEY')}\""
+        buildConfigField "String", "ACR_ACCESS_SECRET", "\"${project.env.get('ACR_ACCESS_SECRET')}\""
     }
 
     buildTypes {
